@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -I src/lib
-LDFLAGS = -lglfw -lGL
+CFLAGS = `pkg-config --cflags gtk+-3.0` -Wall -Wextra -I src/lib
+LDFLAGS = `pkg-config --libs gtk+-3.0`
 
 # define platform and output type
 PLATFORM = linux
@@ -22,7 +22,7 @@ OBJ_PROJ_EXPORT = $(BUILD_DIR)/proj_export.o
 OBJ_WINDOW = $(BUILD_DIR)/window.o
 
 # define targets
-TARGET = $(DIST_DIR)/window.$(OUT_TYPE)
+TARGET = $(DIST_DIR)/dictator.$(OUT_TYPE)
 
 
 

@@ -1,9 +1,10 @@
-#include <GL/gl.h>
-#include <GLFW/glfw3.h>
+#include <gtk/gtk.h>
 
 #include "proj_export.h"
 
-char title[20] = "dictator v0.1.0 beta";
+char APP_NAME[20] = "dictator v0.1.1-beta";
+int APP_SIZE_X = 1280;
+int APP_SIZE_Y = 720;
 
 
 
@@ -20,24 +21,27 @@ int test_proj_export() {
     return 0;
 }
 
+// , gpointer user_data
+static void activate(GtkApplication* app) {
+    GtkWidget *window;
 
-int main() {
-    glfwInit();
+    window = gtk_application_window_new(app);
+    gtk_window_set_title(GTK_WINDOW(window), APP_NAME);
+    gtk_window_set_default_size(GTK_WINDOW(window), APP_SIZE_X, APP_SIZE_Y);
+    gtk_window_present(GTK_WINDOW(window));
+}
 
-    GLFWwindow* window = glfwCreateWindow(1280, 720, title, NULL, NULL);
 
-    while(!glfwWindowShouldClose(window)) {
-        glClear(GL_COLOR_BUFFER_BIT);
-        glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
+int main(int argc, char **argv) {
+    GtkApplication *app;
+    int status;
 
-        glfwPollEvents();
-        glfwSwapBuffers(window);
-    }
-
-    glfwDestroyWindow(window);
-    glfwTerminate();
+    app = gtk_application_new("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
+    g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
+    status = g_application_run(G_APPLICATION(app), argc, argv);
+    g_object_unref(app);
 
     test_proj_export();
 
-    return 0;
+    return status;
 }
