@@ -1,10 +1,4 @@
-#include <gtk/gtk.h>
-
-#include "proj_export.h"
-
-char APP_NAME[20] = "dictator v0.1.1-beta";
-int APP_SIZE_X = 1280;
-int APP_SIZE_Y = 720;
+#include "window.h"
 
 
 
