@@ -1,18 +1,5 @@
-#include <stdio.h>
-#include <string.h>
-#include "cjson/cJSON.h"
+#include "proj_export.h"
 
-
-
-#define MAX_TEXT 128
-
-
-struct scene {
-    int chapter;
-    int episode;
-    char type[20];
-    char text[MAX_TEXT];
-};
 
 
 int export_to_json(struct scene scn) {
@@ -32,7 +19,6 @@ int export_to_json(struct scene scn) {
 
     printf("%s\n", json_str);
     fputs(json_str, fp);
-    fclose;
 
     cJSON_free(json_str);
     cJSON_Delete(json);
@@ -40,14 +26,3 @@ int export_to_json(struct scene scn) {
     return 0;
 }
 
-
-int main() {
-    struct scene scn;
-
-    scn.chapter = 1;
-    scn.episode = 2;
-    strcpy(scn.type, "dialogue");
-    strcpy(scn.text, "this is a sentence !");
-
-    export_to_json(scn);
-}

@@ -1,1 +1,5 @@
+# dirs
+build/*
+
+# files
 *.json
