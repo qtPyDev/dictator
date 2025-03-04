@@ -2,7 +2,7 @@
 #define window_h
 
 #include <gtk/gtk.h>
-#include "proj_export.h"
+#include "fileio.h"
 
 
 #define APP_NAME "dictator v0.1.1-beta"

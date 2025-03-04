@@ -13,12 +13,12 @@ DIST_DIR = dist
 
 # define source files
 SRC_CJSON = $(SRC_DIR)/lib/cJSON.c
-SRC_PROJ_EXPORT = $(SRC_DIR)/proj_export.c
+SRC_FILEiO = $(SRC_DIR)/fileio.c
 SRC_WINDOW = $(SRC_DIR)/window.c
 
 # define object files
 OBJ_CJSON = $(BUILD_DIR)/cJSON.o
-OBJ_PROJ_EXPORT = $(BUILD_DIR)/proj_export.o
+OBJ_FILEIO = $(BUILD_DIR)/fileio.o
 OBJ_WINDOW = $(BUILD_DIR)/window.o
 
 # define targets
@@ -28,7 +28,7 @@ TARGET = $(DIST_DIR)/dictator.$(OUT_TYPE)
 
 all: $(TARGET)
 
-$(TARGET): $(OBJ_WINDOW) $(OBJ_PROJ_EXPORT) $(OBJ_CJSON)
+$(TARGET): $(OBJ_WINDOW) $(OBJ_FILEIO) $(OBJ_CJSON)
 	@mkdir -p $(BUILD_DIR)
 	$(CC) $^ $(LDFLAGS) -o $@
 
